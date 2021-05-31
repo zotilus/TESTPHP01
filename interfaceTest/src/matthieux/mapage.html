@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CECI EST UNE PAGE HTML</h1>
+    <button>ALERT MICHOKO</button>
+    <button id="photo">PHOTOOOOOOOOOOOOOOOOOO</button>
+    <a>POST</a>
+
+    <script type="text/javascript">
+        document.querySelector('button').addEventListener('click', (e) => {
+            fetch("http://localhost:8000")
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(item => document.write(item))
+                })
+        })
+
+        let data = new FormData();
+        data.append('name', 'David')
+
+        document.querySelector('a').addEventListener('click', (e) => {
+            e.preventDefault()
+            fetch("http://localhost:8000/post.php", {
+                method: "POST",
+                body:data
+            }).then(response => {
+                if(response.status === 500){
+                    alert('Shame on me !')
+                } else {
+                    alert('ok')
+                }
+            })
+        })
+
+        document.querySelector('#photo').addEventListener('click' , (e) => {
+            fetch("http://localhost:8000/camera.php", {
+                method: "POST"
+            }).then(response => {
+                if(response.status === 500){
+                    alert('Allume ton appareil cretin !')
+                }
+                return response.text()
+            }).then(data => {
+                alert(data)
+            })
+        })
+    </script>
+</body>
+</html>

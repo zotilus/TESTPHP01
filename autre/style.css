@@ -1,0 +1,145 @@
+a {
+  text-transform: uppercase;
+  color: black;
+  background-color: burlywood;
+  border-radius: 25px;
+  margin: auto;
+  padding: 10px;
+  text-decoration: none;
+  border: grey solid 5px;
+}
+
+a :focus {
+  background-color: tomato;
+  border: tomato solid 5px;
+}
+a:hover {
+  background-color: tomato;
+  border: tomato inset 5px;
+  border-radius: 25px;
+  color: yellow;
+}
+a:after {
+  float: left;
+  background-color: tomato;
+  border: tomato inset 5px;
+  border-radius: 25px;
+  color: yellow;
+}
+
+body {
+  background-color: rgb(94, 97, 90);
+}
+header {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2em;
+ 
+}
+
+#mainDiv {
+  display: flex;
+  background-color: #999990;
+  width: 70vh;
+  /* height: 90%; */
+  margin: auto;
+  border-radius: 25px;
+  box-sizing: content-box;
+  padding: 20px;
+  text-align: center;
+  flex-basis: content;
+}
+
+#footerDiv {
+  display: flex;
+  justify-content: center;
+  /* justify-self: center; */
+
+  background-color: #67808f;
+  width: 70vh;
+  margin: auto;
+  border-radius: 25px;
+  box-sizing: content-box;
+  padding: 20px;
+  color: blanchedalmond;
+}
+nav {
+  display: flex;
+  gap: 20px;
+  background-color: #999990;
+  width: 70vh;
+  /* height: 90%; */
+  margin: auto;
+  border-radius: 25px;
+  box-sizing: content-box;
+  padding: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  flex-basis: content;
+}
+article {
+  display: flex;
+  background-color: whitesmoke;
+ 
+  align-content: space-between;
+  width: 70vmax;
+  /* height: 90%; */
+  margin: auto;
+  border-radius: 25px;
+  box-sizing: content-box;
+  padding: 20px;
+  text-align: center;
+  flex-basis: content;
+}
+
+.divPHPAmiga {
+  font-size: 0.7em;
+   display: inline; 
+  background-color: lightblue;
+  padding: 2em;
+  margin: 0.5em;
+  border-radius: 25px;
+  justify-items: center;
+  width: 100vmax;
+  flex-wrap: wrap;
+  /* text-align-last: justify; */
+}
+.divPHPAtari {
+  font-size: 0.7em;
+  display: inline;
+  background-color: chartreuse;
+  padding: 2em;
+  margin: 0.5em;
+  border-radius: 25px;
+  justify-items: center;
+  width: 100vmax;
+  flex-wrap: wrap;
+}
+.result{
+  font-size: 0.7em;
+  display: flex;
+  flex-direction: column;
+  background-color: orange;
+  padding: 2em;
+  margin: 0.5em;
+  border-radius: 25px;
+  justify-items: center;
+  width: auto;
+  flex-wrap: wrap; 
+  
+}
+.proco{
+  /* font-size: 0.7em; */
+  height: 0.01em;
+  display: flex;
+  /* background-color: rgb(102, 119, 102); */
+  padding: 2em;
+  margin: 0.5em;
+  border-radius: 25px;
+  justify-items: left;
+  width: auto;
+  flex-wrap: wrap; 
+}
+legend{
+  text-align: left;
+}

@@ -1,0 +1,8 @@
+{
+    "name": "stagiaire/interface-test",
+    "require": {},
+    "description": "",
+    "autoload": {
+        "psr-4": {"APP\\": "src/"}
+    }
+}

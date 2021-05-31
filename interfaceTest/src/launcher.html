@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id ="Butt01">String TEST</button>
+    <button id ="Butt02">decode json TEST</button>
+    <button id ="Butt03">test luc 01</button>
+    <div id="reponse"></div>
+<script>
+
+let button = document.querySelector("#Butt01")
+let button02 = document.querySelector("#Butt02")
+let button0 = document.querySelector("#Butt03")
+
+let reponse= document.querySelector("#reponse")
+button.addEventListener("click", (e)=>{
+    console.log( "salut monde");
+    fetch("http://127.0.0.1/TESTPHP/InterfaceTest/src/manage2.php",)
+    .then(response => response.text())
+    .then(data => {
+        console.log(data)
+        reponse.innerHTML = data
+    })
+}
+)
+//butt02
+button02.addEventListener("click", (e)=>{
+    // console.log( "salut monde");
+    fetch("http://127.0.0.1/TESTPHP/InterfaceTest/src/manage2.1.php",)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        let html = ""
+        html += "<h2>"+data.nom+"</h2>"
+        html += "je suis du genre : "+data.genre
+        
+        reponse.innerHTML = html
+    })
+}
+)
+
+</script>
+
+</body>
+</html>
