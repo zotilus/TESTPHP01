@@ -1,81 +1,94 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
 
+<!-- https://codededev.com/blog/article/envoyer-un-mail-avec-swift-mailer -->
 
+<body>
+<div class="container">
+<h1 class="text-center">Sending Emails in PHP from localhost with SMTP</h1>
+<h2 class="text-center">Part 3: Using PHPMailer with attachments</h2>
+<hr>
+	<?php 
+		if(isset($_POST['sendmail'])) {
+			require 'PHPMailerAutoload.php';
+			require 'credential.php';
 
-require '../vendor/autoload.php';
+			$mail = new PHPMailer;
 
+			// $mail->SMTPDebug = 4;                               // Enable verbose debug output
 
-use APP\Employe;
-use APP\Patron;
-use APP\Etudiant;
-use APP\Travailleur;
-use APP\Animaux;
+			$mail->isSMTP();                                      // Set mailer to use SMTP
+			$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+			$mail->SMTPAuth = true;                               // Enable SMTP authentication
+			$mail->Username = EMAIL;                 // SMTP username
+			$mail->Password = PASS;                           // SMTP password
+			$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+			$mail->Port = 587;                                    // TCP port to connect to
 
-include "manage2.html";
-// include "manage2.1.html";
-//require_once("interfaceTest/src/autoload.php");
+			$mail->setFrom(EMAIL, 'Dsmart Tutorials');
+			$mail->addAddress($_POST['email']);     // Add a recipient
 
+			$mail->addReplyTo(EMAIL);
+			// print_r($_FILES['file']); exit;
+			for ($i=0; $i < count($_FILES['file']['tmp_name']) ; $i++) { 
+				$mail->addAttachment($_FILES['file']['tmp_name'][$i], $_FILES['file']['name'][$i]);    // Optional name
+			}
+			$mail->isHTML(true);                                  // Set email format to HTML
 
+			$mail->Subject = $_POST['subject'];
+			$mail->Body    = '<div style="border:2px solid red;">This is the HTML message body <b>in bold!</b></div>';
+			$mail->AltBody = $_POST['message'];
 
+			if(!$mail->send()) {
+			    echo 'Message could not be sent.';
+			    echo 'Mailer Error: ' . $mail->ErrorInfo;
+			} else {
+			    echo 'Message has been sent';
+			}
+		}
+	 ?>
+	<div class="row">
+    <div class="col-md-9 col-md-offset-2">
+        <form role="form" method="post" enctype="multipart/form-data">
+        	<div class="row">
+                <div class="col-sm-9 form-group">
+                    <label for="email">To Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" maxlength="50">
+                </div>
+            </div>
 
-
-// $employe00 = new Employe("Albert",42,"Employé 00","Homme");
-// echo "<br>"; 
-
-$employe01 = new Employe("Mirmiton",50,"Employé 01","Homme");
-// echo "<br>";
-$patron = new Patron("Le Boss",12,"patron","homme","grosse voiture");
-
-$etudiant = new Etudiant("Toto",17,"Etudiant","Homme");
-
-$chien = new Animaux("Tobi",7, 20);
-
-// $employe01 ->nom ="Mirmiton";
-// $employe01->genre = "Homme";
-// $employe01->affichageEmploye();
-//$employe01->getAge(10);
-$employe01->setAge(32); //gaffe au hosting, si tu met à la fin ça marche pas, faut que la variable  passe avant la function d'affichage
-// $employe00->displayEmploye();
-
-// $employe00->Travailler();
-$employe01->displayEmploye();
-faireTravailler($employe01);
-$patron->setAge(60);
-$patron->displayEmploye();
-$patron->rouler();
-faireTravailler($patron);
-$etudiant->displayEmploye();
-pasFaireTravailler($etudiant); //abstaction
-echo "<br>";
-$chien->setPoids(60);
-$chien->getPoids();
-
-// faireTravailler($chien);
-
-
-
-function faireTravailler(Travailleur $object){
-    echo "mon travail est en cours : {$object->Travailler()}";
-}
-
-function pasFaireTravailler(Travailleur $object){
-    echo "mon travail est en cours : {$object->pasTravailler()}";
-}
-
-
-// echo Form::input();
-// faireTravailler($employe00);
-// function faireTravailler(Travailleur $employe00){
-//     echo "<br>mon travail est en cours : {$employe00->Travailler()}";
-// }
-//$employe01 ->age = "keke"; //marche plus en private
-
-echo "<br>". "<br>";
-header("Access-Control-Allow-Origin: *");
-header('Content-Type' , 'application/json');
-echo "DATE : " . (new DateTime)->format("H:i:s");
-echo "<br>". "<br>";
-print_r(json_encode(['David', 'Claire' , 'Brahim', 'Valerie', 'Eric']));
-
-
-?>
+            <div class="row">
+                <div class="col-sm-9 form-group">
+                    <label for="subject">Subject:</label>
+                    <input type="text" class="form-control" id="subject" name="subject" value="Test Mail with attachments" maxlength="50">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-9 form-group">
+                    <label for="name">Message:</label>
+                    <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Your Message Here" maxlength="6000" rows="4">Test mail using PHPMailer</textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-9 form-group">
+                    <label for="name">File:</label>
+                    <input name="file[]" multiple="multiple" class="form-control" type="file" id="file">
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-sm-9 form-group">
+                    <button type="submit" name="sendmail" class="btn btn-lg btn-success btn-block">Send</button>
+                </div>
+            </div>
+        </form>
+	</div>
+</div>
+</body>
+</html>
