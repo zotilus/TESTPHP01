@@ -1,6 +1,8 @@
 {
     "name": "stagiaire/interface-test",
-    "require": {},
+    "require": {
+        "swiftmailer/swiftmailer": "^6.0"
+    },
     "description": "",
     "autoload": {
         "psr-4": {"APP\\": "src/"}
