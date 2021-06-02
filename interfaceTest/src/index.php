@@ -5,14 +5,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-</head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	
+	
+   
 
-<!-- https://codededev.com/blog/article/envoyer-un-mail-avec-swift-mailer -->
+</head>
+<!-- PHP MAILER -->
+
 
 <body>
 <div class="container">
-<h1 class="text-center">Sending Emails in PHP from localhost with SMTP</h1>
-<h2 class="text-center">Part 3: Using PHPMailer with attachments</h2>
+
 <hr>
 	<?php 
 		if(isset($_POST['sendmail'])) {
@@ -73,7 +77,9 @@
             <div class="row">
                 <div class="col-sm-9 form-group">
                     <label for="name">Message:</label>
-                    <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Your Message Here" maxlength="6000" rows="4">Test mail using PHPMailer</textarea>
+                    <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Your Message Here" maxlength="6000" rows="4">Test mail 
+						
+					</textarea>
                 </div>
             </div>
             <div class="row">
@@ -90,5 +96,7 @@
         </form>
 	</div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
