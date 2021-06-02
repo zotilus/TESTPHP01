@@ -35,7 +35,7 @@ if (!(in_array($extensionFichier, $extensionsAutorisees))) {
                 " vérifiez l'existence du répertoire ".$repertoireDestination;
     }
 
-    $nom = "test"; // Le nom du répertoire à créer
+    $nom = "stockage"; // Le nom du répertoire à créer
 
     // Vérifie si le répertoire existe :
     if (is_dir($nom)) {
@@ -66,7 +66,7 @@ $transport = (new Swift_SmtpTransport('smtp.gmail.com',587,'tls'))
 $mailer = new Swift_Mailer($transport);
 
 // Create a message
-$message = (new Swift_Message($POST['subject']))
+$message = (new Swift_Message($_POST['subject']))
 ->setFrom([EMAIL => 'John Doe'])
 ->setTo([$_POST['email']])
 ->setBody($_POST['message'])
@@ -74,9 +74,10 @@ $message = (new Swift_Message($POST['subject']))
 
 // Send the message
 if($mailer->send($message)){
-    echo 'Mail Send...!!'
-}else{
-    echo "Failed to send..!!"
+    echo 'Mail Send...!!';
+}
+else{
+    echo "Failed to send..!!";
 }
 
 ?>
