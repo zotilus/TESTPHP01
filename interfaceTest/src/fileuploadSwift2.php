@@ -25,7 +25,7 @@ $mailer = new Swift_Mailer($transport);
 $message = (new Swift_Message($subject))
     ->setFrom([EMAIL_USERNAME])
     ->setTo([EMAIL_USERNAME])
-    ->setBody($body,'text/html')
+    ->setBody($body,'subject')
 ;
 // Send the message
 $result = $mailer->send($message);
