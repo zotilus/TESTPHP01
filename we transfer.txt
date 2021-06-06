@@ -1,0 +1,39 @@
+swift mail prio
+composer
+ encode jpg
+file reader
+
+
+How to Save Images to Local/Session Storage - JavaScript Tutorial
+https://www.youtube.com/watch?v=8K2ihr3NC40&ab_channel=dcode
+
+
+Storing objects with Local Storage in JavaScript
+https://www.youtube.com/watch?v=AUOzvFzdIk4&ab_channel=dcode
+
+
+
+JavaScript LocalStorage and Session Storage API Tutorial
+https://www.youtube.com/watch?v=zmFDvFwj6-8&ab_channel=DaveGray
+
+
+HTML5 JavaScript Web Storage using localStorage and sessionStorage
+https://www.youtube.com/watch?v=hOCYNdgsUfs&ab_channel=SteveGriffith-Prof3ssorSt3v3
+
+
+
+How To Build A Photo Editor With React And CSS Filters
+https://www.youtube.com/watch?v=J243ncoInNE&ab_channel=WebDevSimplified
+
+Learn Emmet In 15 Minutes - Double Your HTML Coding Speed
+https://www.youtube.com/watch?v=V8vizNQKtx0&ab_channel=WebDevSimplified
+
+Null Object Pattern - Design Patterns login
+https://www.youtube.com/watch?v=D4Dja5WSZoA&ab_channel=WebDevSimplified
+
+
+Build a Popup With JavaScript
+https://www.youtube.com/watch?v=MBaw_6cPmAw&ab_channel=WebDevSimplified
+
+
+

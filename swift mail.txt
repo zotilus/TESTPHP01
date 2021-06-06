@@ -1,0 +1,28 @@
+
+Sending Email from PHP localhost using Swift Mailer and Gmail SMTP with attachment
+https://www.youtube.com/watch?v=7WANMTdxBws&ab_channel=learnWebCoding
+
+TUTO [PHP] : Envoyer un email avec attachment rapidement avec PHP sur un serveur local !
+https://www.youtube.com/watch?v=BqUmJxZh96o&ab_channel=WebCoding
+
+
+Using phpmailer sending Emails in PHP from localhost with SMTP
+https://www.youtube.com/watch?v=-B1L0O6S-88
+
+https://github.com/durgesh-sahani/send-email-using-smtp-phpmailer-localhost
+
+https://github.com/PHPMailer/PHPMailer/tree/5.2-stable
+
+https://help.adk-media.com/utiliser-classe-php-mailer-pour-envoi-emails-smtp.html
+
+https://packagist.org/packages/phpmailer/phpmailer
+
+https://www.youtube.com/watch?v=SPoST_kai2E&ab_channel=ElzeroWebSchool
+
+
+https://store.steampowered.com/
+https://fr.humblebundle.com/
+https://www.indiegala.com/
+https://www.epicgames.com/store/en-US/  un jeu gratuit tout les mois
+https://www.cheapshark.com/ les meilleures promos du mois
+https://www.greenmangaming.com/fr/

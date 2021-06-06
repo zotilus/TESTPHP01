@@ -19,21 +19,40 @@
 
 <hr>
 	<?php 
-		if(isset($_POST['sendmail'])) {
-			require 'PHPMailerAutoload.php';
+	// use PHPMailer\PHPMailer\PHPMailer;
+	// use APP\SMTP;
+	 use APP\PHPMailer;
+	 require '../vendor/autoload.php';
+			// require 'PHPMailerAutoload.php';
 			require 'credential.php';
+			require 'PHPMailer.php';
+			require 'SMTP.php';
+	
+	header("Access-Control-Allow-Origin: *");
 
-			$mail = new PHPMailer;
+		if(isset($_POST['sendmail'])) {
+			
+
+			$mail = new PHPMailer();
+			$mail->isSMTP();
+			$mail->Host = 'smtp.mailtrap.io';
+			$mail->SMTPAuth = true;
+			$mail->Port = 2525;
+			$mail->Username = 'd7f04e094bb83d';
+			$mail->Password = '73de2811ca2a9c';
+
+
+			// $mail = new PHPMailer;
 
 			// $mail->SMTPDebug = 4;                               // Enable verbose debug output
 
-			$mail->isSMTP();                                      // Set mailer to use SMTP
-			$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-			$mail->SMTPAuth = true;                               // Enable SMTP authentication
-			$mail->Username = EMAIL;                 // SMTP username
-			$mail->Password = PASS;                           // SMTP password
-			$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-			$mail->Port = 587;                                    // TCP port to connect to
+			// $mail->isSMTP();                                      // Set mailer to use SMTP
+			// $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+			// $mail->SMTPAuth = true;                               // Enable SMTP authentication
+			// $mail->Username = EMAIL;                 // SMTP username
+			// $mail->Password = PASS;                           // SMTP password
+			// $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+			// $mail->Port = 587;                                    // TCP port to connect to
 
 			$mail->setFrom(EMAIL, 'Dsmart Tutorials');
 			$mail->addAddress($_POST['email']);     // Add a recipient
