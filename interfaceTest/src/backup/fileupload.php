@@ -1,17 +1,6 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div>
-       <p>dhshhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
-    </div>
-<!-- https://codededev.com/blog/article/envoyer-un-mail-avec-swift-mailer -->
+
+    
 
 <?php
 require '../vendor/autoload.php';
@@ -38,7 +27,7 @@ if (!(in_array($extensionFichier, $extensionsAutorisees))) {
                 " vérifiez l'existence du répertoire ".$repertoireDestination;
     }
 
-    $nom = "stockage"; // Le nom du répertoire à créer
+    $nom = "test"; // Le nom du répertoire à créer
 
     // Vérifie si le répertoire existe :
     if (is_dir($nom)) {
@@ -51,44 +40,10 @@ if (!(in_array($extensionFichier, $extensionsAutorisees))) {
           }
 
 }
-?>
-
-<?php 
-
-require_once './vendor/autoload.php';
-require './dev.php'; //Don't forget to add your configuration file
-$subject = 'Mon premier email avec Swift Mailer';
-$body = '<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<title>Mon premier mail</title>
-</head>
-<body>
-    <h1>Hello SwiftMailer</h1>
-</body>
-</html>';
-// Create the Transport
-$transport = (new Swift_SmtpTransport(EMAIL_HOST, EMAIL_PORT))
-    ->setUsername(EMAIL_USERNAME)
-    ->setPassword(EMAIL_PASSWORD)
-    ->setEncryption(EMAIL_ENCRYPTION) //For Gmail
-;
-// Create the Mailer using your created Transport
-$mailer = new Swift_Mailer($transport);
-// Create a message
-$message = (new Swift_Message($subject))
-    ->setFrom([EMAIL_USERNAME])
-    ->setTo([EMAIL_USERNAME])
-    ->setBody($body, 'text/html')
-;
-// Send the message
-$result = $mailer->send($message);
-
-?>
 
 
-</body>
-</html>
+
+
 
 
 
