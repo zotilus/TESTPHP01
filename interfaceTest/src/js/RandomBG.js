@@ -19,11 +19,9 @@ images[2] = "img/BG03.jpg";
 // images[3] = "img/BG04.jpg";
 function changeImg(){
   'use stict';
-  
   setInterval(function(){
     // var RandomNum = Math.floor(Math.random() * images.length);
     index = Math.floor(Math.random() * images.length);
-    // document.body.style.background = "#fff url('"+images[index]+"') no-repeat center center fixed ";
     document.body.style.background = "#fff url('"+images[index]+"') no-repeat center center fixed ";
 
     // elemet.src = images[RandomNum];

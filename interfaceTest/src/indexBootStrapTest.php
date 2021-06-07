@@ -22,9 +22,7 @@
 	<?php 
 	// use PHPMailer\PHPMailer\PHPMailer;
 	// use APP\SMTP;
-	//  use APP\PHPMailer;
-	 use PHPMailer\PHPMailer\PHPMailer;
-	 use PHPMailer\PHPMailer\Exception;
+	 use APP\PHPMailer;
 	 require '../vendor/autoload.php';
 			// require 'PHPMailerAutoload.php';
 			require 'credential.php';
@@ -34,18 +32,15 @@
 	header("Access-Control-Allow-Origin: *");
 
 		if(isset($_POST['sendmail'])) {
-			// function Sendmail($to, $subject, $message, $filename, $path){
+			
 
 			$mail = new PHPMailer();
 			$mail->isSMTP();
-			$mail->Host = 'smtp.gmail.com';
+			$mail->Host = 'smtp.mailtrap.io';
 			$mail->SMTPAuth = true;
-			$mail->Port = 465;
-			$mail->Username = 'zotilus@gmail.com';
-			$mail->Password = 'CocoMorphGmail22';
-			$mail->SMTPSecure = 'tls';
-			// $mail->setFrom('zotilus@gmail.com');  
-
+			$mail->Port = 2525;
+			$mail->Username = 'd7f04e094bb83d';
+			$mail->Password = '73de2811ca2a9c';
 
 
 			// $mail = new PHPMailer;
@@ -60,9 +55,8 @@
 			// $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 			// $mail->Port = 587;                                    // TCP port to connect to
 
-			// recipient
-			$mail->setFrom('zotilus@gmail.com');
-			$mail->addAddress($_POST['email']);     
+			$mail->setFrom(EMAIL, 'Dsmart Tutorials');
+			$mail->addAddress($_POST['email']);     // Add a recipient
 
 			$mail->addReplyTo(EMAIL);
 			// print_r($_FILES['file']); exit;
@@ -71,7 +65,6 @@
 			}
 			$mail->isHTML(true);                                  // Set email format to HTML
 
-			// Content
 			$mail->Subject = $_POST['subject'];
 			$mail->Body    = '<div style="border:2px solid red;">This is the HTML message body <b>in bold!</b></div>';
 			$mail->AltBody = $_POST['message'];
@@ -83,7 +76,6 @@
 			    echo 'Message has been sent';
 			}
 		}
-	// }
 	 ?>
 	<div class="row">
     <div class="col-md-9 col-md-offset-2">

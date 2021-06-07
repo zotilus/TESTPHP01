@@ -9,7 +9,7 @@
 </head>
 <body>
     <div>
-       <p>aaalaaaaaaaaaaarmmmmmmmm!!!!!</p>
+       <p>dhshhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
     </div>
 <!-- https://codededev.com/blog/article/envoyer-un-mail-avec-swift-mailer -->
 
@@ -62,7 +62,6 @@ $nomDuRepStock = "stockage/";
 // use PHPMailer\PHPMailer\PHPMailer;
 // use APP\SMTP;
 use PHPMailer\PHPMailer\PHPMailer;
-
 use PHPMailer\PHPMailer\Exception;
 
  require '../vendor/autoload.php';
@@ -77,40 +76,41 @@ header("Access-Control-Allow-Origin: *");
 
     if(isset($_POST['sendmail'])) {
         
-        // eceba9d702-452cec@inbox.mailtrap.io
-        $mail = new PHPMailer();
-        $mail->isSMTP();
-        $mail->Host = 'smtp.mailtrap.io';
-        $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = 'd7f04e094bb83d';
-        $mail->Password = '73de2811ca2a9c';
-    
 
-        // function sendmail($objet, $contenu, $destinataire) { 
+        // $mail = new PHPMailer();
+        // $mail->isSMTP();
+        // $mail->Host = 'smtp.mailtrap.io';
+        // $mail->SMTPAuth = true;
+        // $mail->Port = 2525;
+        // $mail->Username = 'd7f04e094bb83d';
+        // $mail->Password = '73de2811ca2a9c';
+
+        function sendmail($objet, $contenu, $destinataire) { 
             
-        // $mail = new PHPMailer;
-        // $mail->SMTPDebug = 4;                               // Enable verbose debug output
-        // $mail->isSMTP();                                      // Set mailer to use SMTP
-        // $mail->Host = 'smtp.gmail.com';                         // Specify main and backup SMTP servers
-        // $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        // $mail->Username = EMAIL;                            // SMTP username                                                           // $mail->Password = PASS;                        
-        // $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        // $mail->Port = 587;                                    // TCP port to connect to
-        // $mail->CharSet = 'UTF-8'; 
-        // $mail->setFrom(EMAIL, 'de ZoTiLuS');
-        // $mail->addAddress($_POST['email']);                 // Add a recipient
+        $mail = new PHPMailer;
+
+        $mail->SMTPDebug = 4;                               // Enable verbose debug output
+
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.gmail.com';                         // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = EMAIL;                            // SMTP username
+        // $mail->Password = PASS;                           // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;                                    // TCP port to connect to
+        $mail->CharSet = 'UTF-8'; 
+        $mail->setFrom(EMAIL, 'de ZoTiLuS');
+        $mail->addAddress($_POST['email']);     // Add a recipient
 
         $mail->addReplyTo(EMAIL);
          print_r($_FILES['monfichier']); exit;
-
         for ($i=0; $i < count($_FILES['monfichier']['tmp_name']) ; $i++) { 
             $mail->addAttachment($_FILES['monfichier']['tmp_name'][$i], $_FILES['monfichier']['name'][$i]);    // Optional name
         }
         $mail->isHTML(true);                                  // Set email format to HTML
 
         $mail->Subject = $_POST['subject'];
-        $mail->Body  = '<div style="border:2px solid red;">This is the HTML message body <b>in bold!</b></div>';
+        $mail->Body    = '<div style="border:2px solid red;">This is the HTML message body <b>in bold!</b></div>';
         $mail->AltBody = $_POST['Mon message en texte brut'];
         // $mail->AddAttachment('./doc/content/rapport.pdf','Rapport_2018.pdf');  
         if(!$mail->send()) {
@@ -120,7 +120,7 @@ header("Access-Control-Allow-Origin: *");
             echo 'Message has been sent';
         }
     }
-
+}
 
 
  ?>
