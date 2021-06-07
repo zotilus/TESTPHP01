@@ -19,7 +19,7 @@
 }
 body {
   margin:0;
-  height: 200vh;
+  /* height: 200vh; */
   width: 100vw;
   /* overflow: hidden; */
   font-family: 'Markazi Text', sans-serif;
@@ -28,7 +28,11 @@ body {
   align-items: center;
   justify-content: center;
   color:#555;
-  background: #ecf0f3;
+  /* background: #ecf0f3; */
+  background-size: cover; 
+  height: 100%;
+  transition: background-image 4s;
+  background:#fff url(../img/BG04.jpg) no-repeat center center fixed ;
 }
 
 .login-div {
@@ -36,9 +40,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   width:430px;
-  height: 700px;
+  /* height: 700px; */
   padding: 60px 35px 35px 35px;
   border-radius: 40px;
+  margin: auto;
   background: #ecf0f3;
   box-shadow: 13px 13px 20px #cbced1,
               /* -13px -13px 20px #ffffff; */
@@ -144,15 +149,16 @@ body {
 }
 Form {
   content: "";
-  position:inherit;
-  inset: 20em;
+  /* position:inherit;
+  inset: 20em; */
   border-radius:  25px;
   background-color: #a7aaaf;
+
   display: flex;
   /* margin: auto; */
   flex-direction: column;
-  justify-self: center;
-  
+  /* justify-self: center; */
+  padding: 1rem;
   /* font-size: 1em; */
   color: black;
 }
@@ -182,12 +188,7 @@ html {
 		opacity: 1;
 	}
 } */
-body {
-    background-size: cover; 
-    height: 100%;
-    transition: background-image 4s;
 
-}
 
 /* body::after {
   content: "";
@@ -217,14 +218,12 @@ z-index : 9;
 }
 
 .image-upload{
-/* background-image: url(/src/img/UploadIcon.svg);   */
-/* background: cover; */
-/* justify-self: center;
-margin: auto;
+
+margin : auto;
 width: 100px;
 height: 100px;
-display:flex; */
-/* background-color: aqua;  */
+display:flex; 
+
 }
 
 /* .spacer{
@@ -235,8 +234,9 @@ display:flex; */
   /* width: 400px; */
   background-color: coral;
   display: flex;
+  justify-content: left;
   /* align-content: center; */
-  /* margin: auto; */
+  margin: auto; 
 }
 
 input[type=text] {
