@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '9ec4a8bb77b2398f71a9d2e9635500940da6c7e2',
+    'reference' => 'c2e936efbeb788fd332de7101045e43ea3d6d450',
     'name' => 'stagiaire/interface-test',
   ),
   'versions' => 
@@ -55,6 +55,15 @@ private static $installed = array (
       ),
       'reference' => 'c81f18a3efb941d8c4d2e025f6183b5c6d697307',
     ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v6.4.1',
+      'version' => '6.4.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9256f12d8fb0cd0500f93b19e18c356906cbed3d',
+    ),
     'stagiaire/interface-test' => 
     array (
       'pretty_version' => 'dev-master',
@@ -62,7 +71,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '9ec4a8bb77b2398f71a9d2e9635500940da6c7e2',
+      'reference' => 'c2e936efbeb788fd332de7101045e43ea3d6d450',
     ),
     'swiftmailer/swiftmailer' => 
     array (

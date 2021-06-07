@@ -19,7 +19,7 @@
 }
 body {
   margin:0;
-  height: 200vh;
+  /* height: 200vh; */
   width: 100vw;
   /* overflow: hidden; */
   font-family: 'Markazi Text', sans-serif;
@@ -28,17 +28,28 @@ body {
   align-items: center;
   justify-content: center;
   color:#555;
-  background: #ecf0f3;
+  /* background: #ecf0f3; */
+  background-size: cover; 
+    height: 100%;
+    transition: background-image 4s;
+  background:#fff url(../img/BG04.jpg) no-repeat center center fixed ;
 }
 
 .login-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width:430px;
-  height: 700px;
+  /* height: 700px; */
   padding: 60px 35px 35px 35px;
   border-radius: 40px;
+  margin: auto;
   background: #ecf0f3;
   box-shadow: 13px 13px 20px #cbced1,
               /* -13px -13px 20px #ffffff; */
+              t
+
+              
 }
 .logo {
   /* background:url("/img/logo_Ztv_edited.jpg"); */
@@ -71,8 +82,9 @@ body {
   padding-top: 7px;
   letter-spacing: 3px;
 }
-.fields {
+.fields, .message {
   width: 100%;
+  height: 100%;
   padding: 75px 5px 5px 5px;
 }
 .fields input {
@@ -83,7 +95,7 @@ body {
   color: #555;
   padding:20px 10px 20px 5px;
 }
-.username, .password, .Message, .pin {
+.username, .MyMail, .message, .pin {
   margin-bottom: 30px;
   border-radius: 25px;
   padding-left: 50px;
@@ -92,6 +104,13 @@ body {
   box-shadow: inset 8px 8px 8px #cbced1,
               inset -8px -8px 8px #ffffff;
               
+}
+.Message{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  height: 450px;
 }
 .fields svg {
   height: 22px;
@@ -109,11 +128,12 @@ body {
   font-weight: 700;
   font-family: 'Lato', sans-serif;
   color:#fff;
-  text-align: center;
+  /* text-align: center; */
   background: #24cfaa;
   box-shadow: 3px 3px 8px #b1b1b1,
               -3px -3px 8px #ffffff;
-  transition: 0.5s;
+  transition: 0.8s ;
+  
 }
 .signin-button:hover {
   background:#2fdbb6;
@@ -131,21 +151,20 @@ body {
   font-size: 15px;
 }
 Form {
+  content: "";
+  /* position:inherit; */
+  /* inset: 20em; */
   border-radius:  25px;
   background-color: #a7aaaf;
-  
+  display: flex;
+  /* margin: auto; */
+  flex-direction: column;
+  /* justify-self: center; */
+  padding: 1rem;
   /* font-size: 1em; */
   color: black;
 }
-/* #random{
-  width: 100%;
-  height: 450px;
-  border: 1px solid black;
-  background-image: url('http://placehold.it/300&text=banner1');
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;  
-} */
+
 
 
 html { 
@@ -154,13 +173,26 @@ html {
     width:100%;
     height:100%;
 }
-body {
-    background-size: cover; 
-    height: 100%;
 
+/* .fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
 }
 
-body::after {
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+} */
+
+
+/* body::after {
   content: "";
   height: 2px;
   position: fixed;
@@ -172,10 +204,50 @@ body::after {
 }
 .Icon01{
 display: flex;
-/* justify-self:flex-start; */
+/* justify-self:flex-start;
 width: 100px;
 height: 100px;
 top: calc(50% -1px);
 left: calc(50% -1px);
 z-index : 9;
+} */
+
+.image-upload>input {
+  display: none;
+}
+#file-input{
+  /* display: none; */
+}
+
+.image-upload{
+/* background-image: url(/src/img/UploadIcon.svg);   */
+/* background: cover; */
+/* justify-self: center;
+margin: auto;
+width: 100px;
+height: 100px;
+display:flex; */
+/* background-color: aqua;  */
+}
+
+/* .spacer{
+  width:  250px;
+  height: 250px;
+} */
+#Message[Message] {
+  /* width: 400px; */
+  display: flex;
+  background-color: coral;
+  display: flex;
+  justify-content: left;
+  /* align-content: center; */
+  margin: auto;
+}
+
+input[type=text] {
+  
+  border: 2px solid red;
+  border-radius: 15px;
+  height: 150px;
+  top :0px;
 }
