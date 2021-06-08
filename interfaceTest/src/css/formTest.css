@@ -108,6 +108,7 @@ body {
   flex-direction: column;
   width: 450px;
   height: 450px;
+  box-shadow:  8px 8px 8px #cbced1,
 }
 .fields svg {
   height: 22px;
@@ -148,14 +149,14 @@ body {
   font-size: 15px;
 }
 Form {
+  margin-left: 0px;
+  margin-right: 30px;
   content: "";
-  /* position:inherit;
-  inset: 20em; */
+  /* position:inherit;*/
+  display: flex; 
   border-radius:  25px;
   background-color: #a7aaaf;
-
-  display: flex;
-  /* margin: auto; */
+  justify-self: center;
   flex-direction: column;
   /* justify-self: center; */
   padding: 1rem;
@@ -236,13 +237,15 @@ display:flex;
   display: flex;
   justify-content: left;
   /* align-content: center; */
-  margin: auto; 
+  /* margin: auto;  */
 }
 
 input[type=text] {
   
-  border: 2px solid red;
+  /* border: 2px solid red; */
   border-radius: 15px;
   height: 150px;
   top :0px;
+  box-shadow: inset 8px 8px 8px #cbced1,
+  inset -8px -8px 8px #ffffff;
 }

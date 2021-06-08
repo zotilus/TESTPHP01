@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,79 +8,58 @@
     <title>Document</title>
 </head>
 <body>
+    <div>
+       <p>dhshhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
+    </div>
 <!-- https://codededev.com/blog/article/envoyer-un-mail-avec-swift-mailer -->
+<!-- http://127.0.0.1/TESTPHP/interfaceTest/src/fileupload.php -->
 
 <?php
+
 require '../vendor/autoload.php';
 
 $nomOrigine = $_FILES['monfichier']['name'];
 $elementsChemin = pathinfo($nomOrigine);
 $extensionFichier = $elementsChemin['extension'];
-$extensionsAutorisees = array("jpeg", "jpg", "gif");
-if (!(in_array($extensionFichier, $extensionsAutorisees))) {
-    echo "Le fichier n'a pas l'extension attendue";
-} else {    
+// Le nom du répertoire à créer
+$nomDuRepStock = "stockage/";
+// $extensionsAutorisees = array("jpeg", "jpg", "gif");
+// if (!(in_array($extensionFichier, $extensionsAutorisees))) {
+//     echo "Le fichier n'a pas l'extension attendue";
+// } else {    
     // Copie dans le repertoire du script avec un nom
     // incluant l'heure a la seconde pres 
     $repertoireDestination = dirname(__FILE__)."/";
     $nomDestination = "fichier_du_".date("YmdHis").".".$extensionFichier;
 
     if (move_uploaded_file($_FILES["monfichier"]["tmp_name"], 
-                                     $repertoireDestination.$nomDestination)) {
+    $nomDuRepStock.$nomDestination)) {
         echo "Le fichier temporaire ".$_FILES["monfichier"]["tmp_name"].
-                " a été déplacé vers ".$repertoireDestination.$nomDestination;
+                " a été déplacé vers ".$nomDuRepStock.$nomDestination;
     } else {
         echo "Le fichier n'a pas été uploadé (trop gros ?) ou ".
                 "Le déplacement du fichier temporaire a échoué".
                 " vérifiez l'existence du répertoire ".$repertoireDestination;
     }
 
-    $nom = "stockage"; // Le nom du répertoire à créer
+     
 
     // Vérifie si le répertoire existe :
-    if (is_dir($nom)) {
+    if (is_dir($nomDuRepStock)) {
                       echo 'Le répertoire existe déjà!';  
                       }
     // Création du nouveau répertoire
     else { 
-          mkdir($nom);
-          echo 'Le répertoire '.$nom.' vient d\'être créé!';      
+          mkdir($nomDuRepStock);
+          echo 'Le répertoire '.$nomDuRepStock.' vient d\'être créé!';      
           }
 
-}
+// }
 ?>
 
-<?php 
-if(isset($_POST['sendmail'])){
-    require '../vendor/autoload.php';
-    require 'credential.php';
-}
 
-// require_once '/path/to/vendor/autoload.php';
-$transport = (new Swift_SmtpTransport('smtp.gmail.com',587,'tls'))
-->setUsername('EMAIL')
-->setPassword('PASS')
-;
 
-// Create the Mailer using your created Transport
-$mailer = new Swift_Mailer($transport);
 
-// Create a message
-$message = (new Swift_Message($_POST['subject']))
-->setFrom([EMAIL => 'John Doe'])
-->setTo([$_POST['email']])
-->setBody($_POST['message'])
-;
-
-// Send the message
-if($mailer->send($message)){
-    echo 'Mail Send...!!';
-}
-else{
-    echo "Failed to send..!!";
-}
-
-?>
 
 
 </body>
