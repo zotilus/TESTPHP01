@@ -41,6 +41,7 @@
         </svg><input type="username" class="user-input" placeholder="envoyez à" name="email-to" required 
           placeholder="mail@domain.com" minlength="3" maxlength="64" list="defaultEmails" />
           <datalist id="defaultEmails">
+            <option value="zotilusstock@gmail.com"></option>
             <option value="zotilus@gmail.com">
             <option value="jbond007@mi6.defence.gov.uk">
             <option value="jbourne@unknown.net">
@@ -60,11 +61,14 @@
 
     </div>
 
-    <div class="message">
+    <div class="actionWindows">
      
       <form enctype="multipart/form-data" action="fileupload.php" method="post" >
-
-        <input type="text" name="send_mail" value=""placeholder ="Votre message..." />
+        <div class="Fields_Subject">
+          <input type="text" class="subject" placeholder="Sujet" name="subject">
+        </div>
+        <br/>
+        <input class="message"type="text" name="send_mail" value=""placeholder ="Votre message..." />
         
           <!-- <input type="hidden" name="MAX_FILE_SIZE" value="100000" /> -->
           <!-- <input type="file" name="monfichier" /> -->
