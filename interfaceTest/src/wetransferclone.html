@@ -14,7 +14,7 @@
   <script src="/src/fileupload.php"></script>
   <!-- <script type="text/javascript" src="js/gsap.js" defer></script> -->
 </head>
-
+<!-- requete file mdn fetch $globale en javascript pour le fichier -->
 <body>
   <!-- <img id='myimg1' src="img/BG04.jpg" alt=''/> -->
   <!-- onload="randombg()">
@@ -65,10 +65,11 @@
      
       <form enctype="multipart/form-data" action="fileupload.php" method="post" >
         <div class="Fields_Subject">
-          <input type="text" class="subject" placeholder="Sujet" name="subject">
+          <input class="subject" type="text" name="subject" placeholder="Sujet">
         </div>
         <br/>
-        <input class="message"type="text" name="send_mail" value=""placeholder ="Votre message..." />
+        <input class="message" type="text" name="send_mail" value="" placeholder ="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi qui natus maiores nesciunt. Accusantium quaerat voluptatum alias quas quae assumenda reprehenderit nisi qui reiciendis laudantium eveniet eum quisquam, ex sapiente." />
+        
         
           <!-- <input type="hidden" name="MAX_FILE_SIZE" value="100000" /> -->
           <!-- <input type="file" name="monfichier" /> -->
@@ -84,6 +85,8 @@
           <!-- <div class="choisir">Choisir votre fichier</div> -->
         </div>
         
+
+        <!-- le butt file select -->
         <label for="file-input">
           <!-- <img src="img/noun_Upload_resize.png"> -->
           <!-- <input id="file-input" class="signin-button" type="file" name="monfichier" action="fileupload.php" multiple style="display: none;"></input> -->
@@ -100,12 +103,7 @@
       </form>
 
       <br />
-      <!-- <form enctype="multipart/form-data" action="fileupload_bd.php" method="post">
-            <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
-            <input type="file" name="monfichier" /> -->
-      <!-- <input type="text" name="login" /> -->
-      <!-- Ma photo <input type="file" name="maphoto" /> -->
-      <!-- Mon icone <input type="file" name="monicone" /> -->
+
 
       </form>
       <!-- <div class="spacer"> -->
