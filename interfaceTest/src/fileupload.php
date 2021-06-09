@@ -59,50 +59,36 @@ $nomDuRepStock = "stockage/";
 
 
 <?php 
-// use PHPMailer\PHPMailer\PHPMailer;
-// use APP\SMTP;
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
- require '../vendor/autoload.php';
-        // require 'PHPMailerAutoload.php';
-        require 'credential.php';
-        require 'PHPMailer.php';
-        require 'SMTP.php';
-        require 'Exception.php';
+require '../vendor/autoload.php';
+
+if (isset($_POST['send_mail'])){
     
+    $mail = new PHPMailer;
+    $mail -> Host = 'smtp.gmail.com';
+    $mail -> Port = 587;
+    $mail -> SMTPSecure = 'tls';
+    $mail -> SMTPAuth = true;
+    $mail -> Username = 'zotilusstock@gmail.com'; //expediteur
+    $mail -> Password = 'CocoStock22'; //mot de passe
+    $mail -> setFrom('zotilus@gmail.com','luc');
+    $mail -> addAddress('zotilus@gmail.com'); //destinataire
+    $mail -> IsSMTP(true);
+    $mail -> SMTPDebug = 1;
+    $mail -> Subject = 'hello Zote'; //sujet du mail
+    $mail -> Body = 'Message'; // Message caché
 
-header("Access-Control-Allow-Origin: *");
+    if(!$mail -> send()){
+        echo $mail->ErrorInfo;
+    }else{
+        echo "Message bien envoyé";
+    }
+}
 
-    if(isset($_POST['sendmail'])) {
-        
-
-        // $mail = new PHPMailer();
-        // $mail->isSMTP();
-        // $mail->Host = 'smtp.mailtrap.io';
-        // $mail->SMTPAuth = true;
-        // $mail->Port = 2525;
-        // $mail->Username = 'd7f04e094bb83d';
-        // $mail->Password = '73de2811ca2a9c';
-
-        function sendmail($objet, $contenu, $destinataire) { 
-            
-        $mail = new PHPMailer;
-
-        $mail->SMTPDebug = 4;                               // Enable verbose debug output
-
-        $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'smtp.mailtrap.io';                         // Specify main and backup SMTP servers
-        $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = EMAIL;                            // SMTP username
-        $mail->Password = PASS;                           // SMTP password
-        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 2525;                                    // TCP port to connect to
-        $mail->CharSet = 'UTF-8'; 
-        $mail->setFrom(EMAIL, 'de ZoTiLuS');
-        $mail->addAddress($_POST['email']);     // Add a recipient
-
-        $mail->addReplyTo(EMAIL);
+        $mail->addReplyTo($mail -> Username);
          print_r($_FILES['monfichier']); exit;
         for ($i=0; $i < count($_FILES['monfichier']['tmp_name']) ; $i++) { 
             $mail->addAttachment($_FILES['monfichier']['tmp_name'][$i], $_FILES['monfichier']['name'][$i]);    // Optional name
@@ -111,16 +97,21 @@ header("Access-Control-Allow-Origin: *");
 
         $mail->Subject = $_POST['subject'];
         $mail->Body    = '<div style="border:2px solid red;">This is the HTML message body <b>in bold!</b></div>';
-        $mail->AltBody = $_POST['Mon message en texte brut'];
-        // $mail->AddAttachment('./doc/content/rapport.pdf','Rapport_2018.pdf');  
+        $mail->AltBody = $_POST[$_FILES];
+        $mail->AddAttachment($_FILES['monfichier']['tmp_name'][$i], $_FILES['monfichier']['name'][$i]);  
         if(!$mail->send()) {
             echo 'Message could not be sent.';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
             echo 'Message has been sent';
         }
-    }
-}
+    
+// foreach ($_FILES["myFiles"]["tmp_name"] as $key => $Value){
+
+//     $targetPatch = "uploads/" . basename($_FILES["myFiles"]["name"][$key]);
+//     move_uploaded_file($value, $targetPatch);
+
+// }
 
 
  ?>

@@ -4,7 +4,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 if (isset($_POST['send_mail'])){
     
@@ -13,13 +13,13 @@ if (isset($_POST['send_mail'])){
     $mail -> Port = 587;
     $mail -> SMTPSecure = 'tls';
     $mail -> SMTPAuth = true;
-    $mail -> Username = 'tsboe.2015@gmail.com'; //expediteur
-    $mail -> Password = 'porsche68'; //mot de passe
-    $mail -> setFrom('Ferdi_Codeur@protonmail.com','ferdi');
-    $mail -> addAddress('Ferdi_Codeur@protonmail.com'); //destinataire
+    $mail -> Username = 'zotilusstock@gmail.com'; //expediteur
+    $mail -> Password = 'CocoStock22'; //mot de passe
+    $mail -> setFrom('zotilus@gmail.com','luc');
+    $mail -> addAddress('zotilus@gmail.com'); //destinataire
     $mail -> IsSMTP(true);
     $mail -> SMTPDebug = 1;
-    $mail -> Subject = 'hello ferdi'; //sujet du mail
+    $mail -> Subject = 'hello Zote'; //sujet du mail
     $mail -> Body = 'Message envoyé'; // Message caché
 
     if(!$mail -> send()){
