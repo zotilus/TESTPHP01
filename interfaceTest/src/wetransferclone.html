@@ -10,8 +10,8 @@
   <link rel="stylesheet" type="text/css" href="css/resest.css" />
   <link rel="stylesheet" type="text/css" href="css/formTest.css" />
   <!-- <script type="text/javascript" src="js/parallax.js" defer></script> -->
-  <script type="text/javascript" src="js/RandomBG.js" defer></script>
-  <script src="/src/fileupload.php"></script>
+ <script src="/src/fileupload.php"></script>
+  <script src="/src/filesend.php"></script>
   <!-- <script type="text/javascript" src="js/gsap.js" defer></script> -->
 </head>
 <!-- requete file mdn fetch $globale en javascript pour le fichier -->
@@ -24,21 +24,22 @@
 
 
   <div class="login-div">
-    <div class="logo"><img src="img/logo_Ztv_edited.jpg" alt="logo_ZotilusTV" width="100"></div>
+  
+    <div class="logo"> <img src="img/logo_Ztv_edited.jpg"  width="80" height="100"></div>
 
     <!-- <div class="title"><label for="SendEasy"></label></div>  -->
     <!-- <div class="sub-title"></div> -->
     <!-- <form role="form" method="post" enctype="multipart/form-data" action="fileupload.php"> -->
 
     </form>
-    <div class="fields">
+    <div class="container">
 
       <!-- le mail du destinataire -->
-      <div class="username"><svg fill="#999" viewBox="0 0 1024 1024">
+      <div class="destinataire"><svg fill="#999" viewBox="0 0 1024 1024">
           <path class="path1"
             d="M896 307.2h-819.2c-42.347 0-76.8 34.453-76.8 76.8v460.8c0 42.349 34.453 76.8 76.8 76.8h819.2c42.349 0 76.8-34.451 76.8-76.8v-460.8c0-42.347-34.451-76.8-76.8-76.8zM896 358.4c1.514 0 2.99 0.158 4.434 0.411l-385.632 257.090c-14.862 9.907-41.938 9.907-56.802 0l-385.634-257.090c1.443-0.253 2.92-0.411 4.434-0.411h819.2zM896 870.4h-819.2c-14.115 0-25.6-11.485-25.6-25.6v-438.566l378.4 252.267c15.925 10.618 36.363 15.925 56.8 15.925s40.877-5.307 56.802-15.925l378.398-252.267v438.566c0 14.115-11.485 25.6-25.6 25.6z">
           </path>
-        </svg><input type="username" class="user-input" placeholder="envoyez à" name="email-to" required 
+        </svg><input type="username" class="pass-input" placeholder="envoyez à" name="destinataire" required 
           placeholder="mail@domain.com" minlength="3" maxlength="64" list="defaultEmails" />
           <datalist id="defaultEmails">
             <option value="zotilusstock@gmail.com"></option>
@@ -52,72 +53,54 @@
           </datalist>
         </div>
       <!-- Mail de l'envoyeur -->
-      <div class="MyMail"><svg fill="#999" viewBox="0 0 1024 1024">
+      <div class="mail"><svg fill="#999" viewBox="0 0 1024 1024">
           <path class="path1"
             d="M896 307.2h-819.2c-42.347 0-76.8 34.453-76.8 76.8v460.8c0 42.349 34.453 76.8 76.8 76.8h819.2c42.349 0 76.8-34.451 76.8-76.8v-460.8c0-42.347-34.451-76.8-76.8-76.8zM896 358.4c1.514 0 2.99 0.158 4.434 0.411l-385.632 257.090c-14.862 9.907-41.938 9.907-56.802 0l-385.634-257.090c1.443-0.253 2.92-0.411 4.434-0.411h819.2zM896 870.4h-819.2c-14.115 0-25.6-11.485-25.6-25.6v-438.566l378.4 252.267c15.925 10.618 36.363 15.925 56.8 15.925s40.877-5.307 56.802-15.925l378.398-252.267v438.566c0 14.115-11.485 25.6-25.6 25.6z">
           </path>
-        </svg><input type="username" class="pass-input" placeholder="votre mail" name="monMail" required
+        </svg><input type="username" class="user-input" placeholder="votre mail" name="mail" required
            multiple autocorrect off/></div>
-
     </div>
 
     <div class="actionWindows">
      
-      <form enctype="multipart/form-data" action="fileupload.php" method="post" >
-        <div class="Fields_Subject">
-          <input class="subject" type="text" name="subject" placeholder="Sujet">
+      <form enctype="multipart/form-data" action="filesend.php" method="post" >
+        <!-- fileButton -->
+        <input id="file-input"  class="fileButton" type="file" name="monfichier" action="fileupload.php" data-multiple-caption="{count} files selected" multiple ><label for="file-input"> <svg  id= "svginput"  width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg>  <span>Choose a file</span></label>
+        
+          
+        
+      </input>
+    
+
+
+        <div class="ChampSujet">
+          <input class="sujet" type="text" name="sujet" placeholder="Sujet">
         </div>
+        <br/>  
+        <!-- contenu de l'envoi en txt      -->
+        <div class="ChampContent">
+          <textarea name="content" id="content" cols="30" rows="10" placeholder="Vos fichiers"></textarea>
+          <!-- Preview -->
+          <canvas class="canvas"> 
+          </canvas>
+        </div> 
         <br/>
-        <input class="message" type="text" name="send_mail" value="" placeholder ="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi qui natus maiores nesciunt. Accusantium quaerat voluptatum alias quas quae assumenda reprehenderit nisi qui reiciendis laudantium eveniet eum quisquam, ex sapiente." />
+        <!-- message      -->
+        <div class="ChampMessage">
+        <textarea  rows="20" cols="50"  class="message"  placeholder ="Votre message" type="text" name="message" style="text-align:left;"></textarea> </textarea>
         
-        
-          <!-- <input type="hidden" name="MAX_FILE_SIZE" value="100000" /> -->
-          <!-- <input type="file" name="monfichier" /> -->
-
-        
-        <div class="image-upload">
-          <label for="file-input">
-            <!-- <img src="/src/img/noun_Upload_resize.png"/> -->
-            
-          </label>
-          <!-- <input  type="file" name="monfichier" /> -->
-          <!-- <input id="file-input" type="file" name="monfichier" /> -->
-          <!-- <div class="choisir">Choisir votre fichier</div> -->
-        </div>
-        
-
-        <!-- le butt file select -->
-        <label for="file-input">
-          <!-- <img src="img/noun_Upload_resize.png"> -->
-          <!-- <input id="file-input" class="signin-button" type="file" name="monfichier" action="fileupload.php" multiple style="display: none;"></input> -->
-          <input id="file-input" class="signin-button" type="file" name="monfichier" action="fileupload.php" multiple ></input>
-        </label>
-        
-        
-
-        <!-- <br/><br/><br/> -->
-        
-        
-        <br/><br/>
-        <button class="signin-button" type="submit" name ="email" action="fileupload.php">Envoyer</button>
+      </div>
+      <!-- sendButton -->
+        <br/>
+        <button id="file-send"class="sendButton" type="submit" name ="email" action="filesend.php">Envoyer</button>
       </form>
 
-      <br />
 
-
-      </form>
-      <!-- <div class="spacer"> -->
       
       </div>
-
-    </div>
-
-    <!-- <div class="link">
-        <a href="#">Forgot password?</a> or <a href="#">Sign up</a>
-      </div> -->
-  </div>
-
-  <!-- <div class="Icon01"> <img src="img/noun_Flying Car_2838655.png" alt="symboleDeco01"></div> -->
+      
+      <script type="text/javascript" src="js/RandomBG.js" ></script>
+      <script type="text/javascript" src="js/inputfiletext.js" ></script>
 </body>
 
 </html>
