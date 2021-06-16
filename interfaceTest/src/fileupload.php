@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,6 @@
     <div>
        <p>dhshhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
     </div>
-
-    <!-- https://www.taniarascia.com/how-to-upload-files-to-a-server-with-plain-javascript-and-php/ -->
 <!-- https://codededev.com/blog/article/envoyer-un-mail-avec-swift-mailer -->
 
 <?php
@@ -59,7 +58,66 @@ $nomDuRepStock = "stockage/";
 
 
 
+<?php 
 
+
+
+require '../vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+if (isset($_POST['send_mail'])){
+    
+    $mail = new PHPMailer;
+    $mail -> Host = 'smtp.mailtrap.io';
+    $mail -> Port = 2525;
+    $mail -> SMTPSecure = 'tls';
+    $mail -> SMTPAuth = true;
+    $mail -> Username = 'd7f04e094bb83d'; //expediteur
+    $mail -> Password = '73de2811ca2a9c'; //mot de passe
+    $mail -> setFrom('kikou@toto.com','luc');
+    $mail -> addAddress('kikou@toto.com'); //destinataire
+    $mail -> IsSMTP(true);
+    $mail -> SMTPDebug = 1;
+    $mail -> Subject = $_POST['subject']; //sujet du mail
+    $mail -> Body = $_POST['message']; // Message caché
+    // $content = file_get_contents('http://anothersite/images/goods.jpg');
+    // file_put_contents(DIRECTORY . '/image.jpg', $content);
+
+    if(!$mail -> send()){
+        echo $mail->ErrorInfo;
+    }else{
+        echo "Message bien envoyé";
+    }
+}
+
+        $mail->addReplyTo($mail -> Username);
+         print_r($_FILES['monfichier']); exit;
+        for ($i=0; $i < count($_FILES['monfichier']['tmp_name']) ; $i++) { 
+            $mail->addAttachment($_FILES['monfichier']['tmp_name'][$i], $_FILES['monfichier']['name'][$i]);    // Optional name
+        }
+        $mail->isHTML(true);                                  // Set email format to HTML
+
+        $mail->Subject = $_POST['subject'];
+        $mail->Body    = '<div style="border:2px solid red;">This is the HTML message body <b>in bold!</b></div>'.$_POST['message'];
+        $mail->AltBody = $_POST[$_FILES];
+        $mail->AddAttachment($_FILES['monfichier']['tmp_name'][$i], $_FILES['monfichier']['name'][$i]);  
+        if(!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            echo 'Message has been sent';
+        }
+    
+// foreach ($_FILES["myFiles"]["tmp_name"] as $key => $Value){
+
+//     $targetPatch = "uploads/" . basename($_FILES["myFiles"]["name"][$key]);
+//     move_uploaded_file($value, $targetPatch);
+
+// }
+
+
+ ?>
 
 
 </body>
