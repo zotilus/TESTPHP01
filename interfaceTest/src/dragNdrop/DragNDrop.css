@@ -1,0 +1,188 @@
+body {
+  background-color: #999990;
+  margin: 20px;
+}
+#BG01 {
+    z-index: 1;
+  width: 95%;
+  height: 70%;
+  margin: auto;
+background-color: orange; 
+  border-top-left-radius: 300px;
+  border-bottom-right-radius: 300px;
+  padding: 20px;
+  filter: drop-shadow(5px 5px 4px rgb(92, 92, 92));
+  /* background: rgb(255,165,0); */
+  background: radial-gradient(circle, rgba(255,165,0,1) 1%, rgba(153,153,144,0) 100%); 
+  box-shadow: inset 10px 10px 10px rgb(27, 27, 27,0.5);
+}
+#BG02 {
+    z-index: 2;
+    width: 20vw;
+    height: 50%;
+    margin: auto;
+    background-color:ivory;
+    border-radius: 25px;
+    padding: 20px;
+    filter: drop-shadow(5px 5px 4px rgb(92, 92, 92));
+    box-shadow: inset 0px 0px 25px rgba(0,0,0,0.9);
+}
+p {
+  text-align: center;
+  padding: 5em;
+}
+span{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold ;
+    text-transform: uppercase;
+    margin: 20px;
+}
+
+canvas {
+    -webkit-appearance: none;
+  appearance: none;
+  display: flex;
+  background-color: palegoldenrod;
+  margin: auto;
+  border-radius: 25px;
+  border: darkorange black 2px;
+  cursor:crosshair;
+  opacity: 0.7;
+  width: 40vw;
+  height: 40vh;
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  /* filter: drop-shadow(5px 5px 4px #4444dd); */
+  box-shadow: inset 10px 10px 10px rgb(27, 27, 27,0.5);
+  max-height: 40vw;
+  max-width: 40vh;
+}
+canvas:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+  border-radius: 15px;
+}
+
+/* The slider itself */
+.slider {
+  display: flex;
+  
+  margin: auto;
+  padding: 10px;
+  border-radius: 25px;
+ 
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 70%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  filter: drop-shadow(5px 5px 4px rgb(92, 92, 92));
+  
+  
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 60px; /* Set a specific slider handle width */
+  height: 60px; /* Slider handle height */
+  background: #4caf50; /* Green background */
+  border-radius: 100px;
+  cursor: pointer; /* Cursor on hover */
+  filter: drop-shadow(5px 5px 4px rgb(92, 92, 92));
+  box-shadow: inset 0px 0px 25px rgba(0,0,0,0.9);
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4caf50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  padding: 20px;
+}
+
+#btnDiv {
+  display: flex;
+  /* flex-wrap:wrap; */
+  flex-flow: wrap;
+  gap: 6px;
+  width: 40%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin: auto;
+  justify-content: space-evenly;
+ 
+}
+#btnLT, #btnRT , #btnRM , #btnLM {
+    width: 4em;
+    height: 4em;
+    border-radius: 15px;
+    border:medium 2px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+/* #dropDiv {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  align-items: center;
+  position: relative; 
+  font-size: 2rem; 
+} 
+*/
+
+/* #dropDiv.hover {
+  background-color: green;
+}
+#dropDiv.error{
+  background-color: red;
+} */
+
+
+
+
+#canvas-container{
+  flex-basis: 120%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+.TxtResize{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 20px;
+  width: fit-content;
+  box-sizing: content-box;
+  /* justify-content: center; */
+  text-align: center;
+  border-radius: 25px;
+  padding: 20px;
+  background-color: #999990;
+  
+}

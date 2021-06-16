@@ -16,7 +16,7 @@ form.addEventListener('submit',(e) => {
     formData.append('files[]', file)
   }
 
-  // Canvas
+  
 
   fetch(url, {
     method: 'POST',

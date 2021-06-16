@@ -39,8 +39,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width:380px;
-  height: 145vh; 
+  width:380px; 
   padding: 60px 35px 35px 35px;
   border-radius: 40px;
   margin: auto;
@@ -71,7 +70,7 @@ body {
   color: #555;
   padding:20px 10px 20px 5px;
 }
-.destinataire, .mail{
+.username, .mail{
   margin-bottom: 30px;
   border-radius: 25px;
   padding-left: 50px;
@@ -150,7 +149,7 @@ Form {
   /* color: black; */
 }
 
-.sujet[type=text]{
+.subject[type=text]{
   font-size: 1rem;
   text-indent: 0.5rem;
   border-radius: 15px;
@@ -167,26 +166,33 @@ Form {
   gap: 10px;
 }
 .canvas{
+  /* opacity:0.5; */
   display: flex; 
   overflow: visible;
   border-radius: 15px;
-  /* width: 98%; */
+  width: 50%;
   height: 21vh;
   box-shadow: inset 8px 8px 8px #cbced1,
-  inset -8px -8px 8px #ffffff; 
+  inset -8px -8px 8px #ffffff;  
+  /* background: no-repeat;
+  background-attachment: scroll; */
+  background-color: #cbced1;
+  background:url("img/BG03.jpg"); 
+  
 }
 #content{
   display: flex; 
   overflow: visible;
   word-wrap: break-word;
   border-radius: 15px;
-  width: 98%;
+  width: 50%;
   height: 20vh;
   box-shadow: inset 8px 8px 8px #cbced1,
   inset -8px -8px 8px #ffffff; 
-  font-size: 0.6rem;
+  font-size: 1rem;
   text-indent: 0.5rem;
-  resize: vertical;
+   /* resize: vertical;  */
+  resize: none;
 }
 .message[type=text]{
   display: flex; 

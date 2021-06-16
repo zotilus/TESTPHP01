@@ -27,7 +27,7 @@
 	use PHPMailer\PHPMailer\Exception;
 	require '../vendor/autoload.php';
 		   // require 'PHPMailerAutoload.php';
-		   require 'credential.php';
+		//    require 'credential.php';
 		   require 'PHPMailer.php';
 		   require 'SMTP.php';
    

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="Butt01">String TEST</button>
+    <button id="Butt02">decode json TEST</button>
+    <button id="Butt03">test</button>
+    <div id="reponse"></div>
+
+    <body style="margin:0">
+      <canvas id="canvasElem" width="100" height="80" style="border:1px solid"></canvas>
+    
+      <input type="button" value="Submit" onclick="submit()">
+
+    <script>
+
+      let button = document.querySelector("#Butt01")
+      let button02 = document.querySelector("#Butt02")
+      let button03 = document.querySelector("#Butt03")
+      let reponse= document.querySelector("#reponse")
+
+//       const myImage = document.querySelector('img');
+
+// fetch('logo_Ztv_edited.jpg')
+// .then(function(response) {
+//   return response.blob();
+// })
+// .then(function(myBlob) {
+//   const objectURL = URL.createObjectURL(myBlob);
+//   myImage.src = objectURL;
+// });
+//             // 'img/logo_Ztv_edited.jpg'
+//         button03.addEventListener("click", (e)=>{
+//           console.log( "salut monde");
+//           fetch('logo_Ztv_edited.jpg',)
+//         .then(function(response) {
+//         if(response.ok) {
+//           response.blob().then(function(myBlob) {
+//             var objectURL = URL.createObjectURL(myBlob);
+//             myImage.src = objectURL;
+//           });
+//         } else {
+//           console.log('Mauvaise réponse du réseau');
+//         }
+//       })
+//       .catch(function(error) {
+//         console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+//       });
+
+
+
+function submit() {
+  canvasElem.toBlob(function(blob) {
+    fetch('/article/fetch/post/image', {
+      method: 'POST',
+      body: blob
+    })
+      .then(response => response.json())
+      .then(result => alert(JSON.stringify(result, null, 2)))
+  }, 'image/png');
+}
+  
+    canvasElem.onmousemove = function(e) {
+      let ctx = canvasElem.getContext('2d');
+      ctx.lineTo(e.clientX, e.clientY);
+      ctx.stroke();
+    };
+
+    async function submit() {
+      let blob = await new Promise(resolve => canvasElem.toBlob(resolve, 'image/png'));
+      let response = await fetch('/article/fetch/post/image', {
+        method: 'POST',
+        body: blob
+      });
+
+      // the server responds with confirmation and the image size
+      let result = await response.json();
+      alert(result.message);
+    }
+    
+
+
+
+      button.addEventListener("click", (e)=>{
+          console.log( "salut monde");
+          fetch("http://127.0.0.1/TESTPHP/InterfaceTest/src/manage2.php",)
+          .then(response => response.text())
+          .then(data => {
+              console.log(data)
+              reponse.innerHTML = data
+          })
+      }
+      )
+      //butt02
+      button02.addEventListener("click", (e)=>{
+          // console.log( "salut monde");
+          fetch("http://127.0.0.1/TESTPHP/InterfaceTest/src/manage2.1.php",)
+          .then(response => response.json())
+          .then(data => {
+              console.log(data)
+              let html = ""
+              html += "<h2>"+data.nom+"</h2>"
+              html += "je suis du genre : "+data.genre
+
+              reponse.innerHTML = html
+          })
+      });
+    </script>
+  </body>
+</html>

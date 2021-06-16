@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="DragNDrop.css">
+</head>
+
+<div id="BG01" class="MainDiv">
+    <div id="BG02">
+
+        <div id="dropDiv">
+
+    <span><samp for="file">Drop files below</samp></span>
+<div class="canvas-container">
+
+    <canvas>
+
+    </canvas>
+    
+</div>
+</div>
+<br>
+    <div id="btnDiv">
+        <Button id="btnLT" name="TurnLeft">TURN LEFT</Button>
+        <Button id="btnRT" name="TurnRight">TURN RIGHT</Button>
+        <Button id="btnRM" name="MoveRight">MOVE RIGHT</Button>
+        <Button id="btnLM" name="MoveLeft">MOVE LEFT</Button>
+    </div>
+    
+    <div class="slidecontainer">
+        <span>ZOOM SLIDE</span>
+        <input type="range" min="1" max="100" value="50" step="10" class="slider" id="canvasScale" onchange="scaleCanvas()"></div>
+
+<div class="TxtResize">Height:<input type="text" id="height" onchange="resizeCanvas()"> Width: <input type="text" id="width" onchange="resizeCanvas()"></div>
+
+    </div>
+</div>
+<!-- <div id="drop-zone">
+    <label for="file">Déposer une image</label>
+    <button id="rotate-button" disabled>
+        <img src="/img/rotate-button.svg" alt="rotation" id="rotate-image" >
+    </button>
+    <div id="canvas-container">
+        <canvas></canvas>
+    </div>
+</div> -->
+<div id="preview"></div>
+
+<body>
+
+    <script src="DragNDrop.js"></script>
+</body>
+
+</html>
