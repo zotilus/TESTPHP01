@@ -16,12 +16,15 @@
 <?php
 
 require '../vendor/autoload.php';
+require_once __DIR__."../config.php";
 
 $nomOrigine = $_FILES['monfichier']['name'];
 $elementsChemin = pathinfo($nomOrigine);
 $extensionFichier = $elementsChemin['extension'];
 // Le nom du répertoire à créer
 $nomDuRepStock = "stockage/";
+$source = $_FILES["monfichier"]["tmp_name"];
+$filename = $_FILES["monfichier"]["tmp_name"];
 // $extensionsAutorisees = array("jpeg", "jpg", "gif");
 // if (!(in_array($extensionFichier, $extensionsAutorisees))) {
 //     echo "Le fichier n'a pas l'extension attendue";
@@ -66,6 +69,10 @@ require '../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+<<<<<<< HEAD
+// define ('SITE_ROOT', realpath(dirname(__FILE__)));
+=======
+>>>>>>> da336da002aea6d5d7f318ca1daa978922e9c178
 if (isset($_POST['send_mail'])){
     
     $mail = new PHPMailer;
@@ -81,6 +88,43 @@ if (isset($_POST['send_mail'])){
     $mail -> SMTPDebug = 1;
     $mail -> Subject = $_POST['subject']; //sujet du mail
     $mail -> Body = $_POST['message']; // Message caché
+<<<<<<< HEAD
+    $url =  'http://127.0.0.1/TESTPHP/interfaceTest/src/stockage/';
+    
+  
+    // if ($nomDestination != '') {
+    //     foreach ($_FILES["monfichier"]["tmp_name"] as $nomDestinations) {
+    //         $mail->AddAttachment($nomDestinations, $nomDestination);
+    //     }
+    // }
+
+    // $mail->AddAttachment(
+    //     $path = $url,
+    //     $name = $nomDestination,
+    //     // $encoding = self::ENCODING_BASE64,
+    //     $type = file($nomDestination,64,$_FILES["monfichier"]["tmp_name"]),
+    //     $disposition = 'attachment');
+
+    
+    // $mail->addStringAttachment(file_get_contents("url"), "filename");
+    //  $mail->addStringAttachment(file_get_contents($repertoireDestination),$nomDestination);
+    $mail->addStringAttachment(file_get_contents($url), $nomDestination);
+    
+
+    // $content = file_get_contents('http://anothersite/images/goods.jpg');
+    // file_put_contents(DIRECTORY . '/image.jpg', $content);
+
+    if(!$mail -> send()){
+        echo $mail->ErrorInfo;
+        var_dump($source);
+    }else{
+        echo "Message bien envoyé";
+    }
+}
+
+        $mail->addReplyTo($mail -> Username);
+         print_r($_FILES['monfichier']['tmp_name']); exit;
+=======
     // $content = file_get_contents('http://anothersite/images/goods.jpg');
     // file_put_contents(DIRECTORY . '/image.jpg', $content);
 
@@ -93,6 +137,7 @@ if (isset($_POST['send_mail'])){
 
         $mail->addReplyTo($mail -> Username);
          print_r($_FILES['monfichier']); exit;
+>>>>>>> da336da002aea6d5d7f318ca1daa978922e9c178
         for ($i=0; $i < count($_FILES['monfichier']['tmp_name']) ; $i++) { 
             $mail->addAttachment($_FILES['monfichier']['tmp_name'][$i], $_FILES['monfichier']['name'][$i]);    // Optional name
         }
@@ -100,25 +145,82 @@ if (isset($_POST['send_mail'])){
 
         $mail->Subject = $_POST['subject'];
         $mail->Body    = '<div style="border:2px solid red;">This is the HTML message body <b>in bold!</b></div>'.$_POST['message'];
+<<<<<<< HEAD
+        $mail->AltBody = 'votre client mail n\'accepte pas le format html';
+        // $mail->AddAttachment($_FILES['monfichier']['tmp_name'][$i], $_FILES['monfichier']['name'][$i]);  
+        $mail->AddAttachment($source, $filename);
+
+=======
         $mail->AltBody = $_POST[$_FILES];
         $mail->AddAttachment($_FILES['monfichier']['tmp_name'][$i], $_FILES['monfichier']['name'][$i]);  
+>>>>>>> da336da002aea6d5d7f318ca1daa978922e9c178
         if(!$mail->send()) {
             echo 'Message could not be sent.';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
             echo 'Message has been sent';
+            
         }
     
+<<<<<<< HEAD
+// foreach ($_FILES["monfichier"]["tmp_name"] as $key => $Value){
+
+//     $targetPatch = "stockage/" . basename($_FILES["monfichier"]["tmp_name"][$key]);
+//     move_uploaded_file($value, $targetPatch);
+
+// }
+foreach(array_keys($_FILES["monfichier"]["tmp_name"]) as $key) {
+    $source = $_FILES["monfichier"]["tmp_name"][$key];
+    $filename = $_FILES["monfichier"]["tmp_name"][$key];
+ 
+    //  $mail->AddAttachment($source, $filename);
+ }
+
+
+$name = $_GET['ref'];
+$directory = '../stockage/'.$name;
+
+
+$files = scandir($directory);
+
+$nb_fichier = 0;
+
+echo '<ul>';
+
+if($dossier = opendir($directory ))
+{
+    while(false !== ($fichier = readdir($dossier)))
+    {
+        if($fichier != '.' && $fichier != '..' && $fichier != 'fileupload.php')
+        {
+            $nb_fichier++;
+            $chemin = $directory.'/'. $fichier;
+            echo'href="http://localhost:8080/Src/TelechargementFichier.php?ref=%27.$chemin.%27%22a%3E%27.$fichier.';
+            echo '<br>'.$chemin;
+        } 
+
+    }
+    echo '</ul><br />';
+    echo 'Il y a <strong>' . $nb_fichier .'</strong> fichier(s) dans le dossier';
+=======
 // foreach ($_FILES["myFiles"]["tmp_name"] as $key => $Value){
 
 //     $targetPatch = "uploads/" . basename($_FILES["myFiles"]["name"][$key]);
 //     move_uploaded_file($value, $targetPatch);
 
 // }
+>>>>>>> da336da002aea6d5d7f318ca1daa978922e9c178
+
+    closedir($dossier);
+
+}
+else
+{
+    echo 'Le dossier n\' a pas pu être ouvert';
+}
 
 
- ?>
-
+?>
 
 </body>
 </html>
