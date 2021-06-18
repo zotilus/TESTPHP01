@@ -9,9 +9,10 @@
 </head>
 <body>
     <div>
-       <p>dhshhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
+       <p>Voici venir les Barbapapa ,ils Se transformant à volonté
+        Ronds ou carrés</p>
     </div>
-<!-- https://codededev.com/blog/article/envoyer-un-mail-avec-swift-mailer -->
+
 
 <?php
 
@@ -23,14 +24,14 @@ $elementsChemin = pathinfo($nomOrigine);
 $extensionFichier = $elementsChemin['extension'];
 // Le nom du répertoire à créer
 $nomDuRepStock = "stockage/";
-$source = $_FILES["monfichier"]["tmp_name"];
-$filename = $_FILES["monfichier"]["tmp_name"];
+// $source = $_FILES["monfichier"]["tmp_name"];
+// $filename = $_FILES["monfichier"]["tmp_name"];
 // $extensionsAutorisees = array("jpeg", "jpg", "gif");
 // if (!(in_array($extensionFichier, $extensionsAutorisees))) {
 //     echo "Le fichier n'a pas l'extension attendue";
 // } else {    
     // Copie dans le repertoire du script avec un nom
-    // incluant l'heure a la seconde pres 
+    // incluant l'heure  
     $repertoireDestination = dirname(__FILE__)."/";
     $nomDestination = "fichier_du_".date("YmdHis").".".$extensionFichier;
 
@@ -112,6 +113,7 @@ if (isset($_POST['send_mail'])){
     // $mail->addStringAttachment(file_put_contents($nomDestination, implode($_FILES['monfichier']['tmp_name'], $array));
     //$mail->addStringAttachment(file_get_contents($url), $nomDestination);
 
+    // PDF
     if (isset($_GET['monfichier'])) {
         $file = $_GET['monfichier'];
         if (file_exists($file) && is_readable($file) && preg_match('/\.pdf$/',$file)) {
@@ -120,6 +122,8 @@ if (isset($_POST['send_mail'])){
          readfile($file);
          }
         }
+
+
     
 
     
@@ -188,7 +192,7 @@ if($dossier = opendir($directory ))
         {
             $nb_fichier++;
             $chemin = $directory.'/'. $fichier;
-            echo'href="http://localhost:8080/Src/TelechargementFichier.php?ref=%27.$chemin.%27%22a%3E%27.$fichier.';
+            echo $url;
             echo '<br>'.$chemin;
         } 
 
@@ -206,6 +210,28 @@ else
 
 
 ?>
+
+<?php 
+$unique = uniqid();
+$file = 'post.php';
+$root = '/' . $dir_auth1 . '/'. $file;
+$folder = mkdir($unique); 
+$folder5 = $folder . '/' . $file;
+$newFolder = '/' . $unique . '/' . $file;
+$destination= 'gallry' . '/'  . $unique . '/' . $file;
+if($folder) {
+
+echo $newFolder;
+copy('file.php', $newFolder);
+if (!copy('file.php', $newFolder)) {
+    echo "nope.";   
+} else {
+    echo "Success!";
+    echo $newFolder;`
+
+}
+
+}?>
 
 </body>
 </html>
